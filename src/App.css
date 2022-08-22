@@ -3,9 +3,9 @@
 }
 
 body {
-  padding-top: 10px;
-  padding-left: 20px;
+  padding: 30px;
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -39,4 +39,22 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.vertically-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.outer-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  gap: 10px;
+}
+
+.divider {
+  height: 500px;
+  padding: 50px;
 }

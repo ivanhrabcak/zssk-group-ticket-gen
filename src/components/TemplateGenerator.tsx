@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TemplateData, TemplateHandler } from 'easy-template-x';
 import { toast } from 'react-toastify';
 import { read, utils } from 'xlsx';
@@ -6,6 +6,8 @@ import { Buffer } from 'buffer';
 import JSZip from 'jszip';
 
 import '../css/TemplateGenerator.css';
+import { Button, Label } from '@fluentui/react-components';
+import { Checkmark48Filled, Folder48Filled } from '@fluentui/react-icons';
 
 type Member = {
   Name: string
@@ -34,13 +36,18 @@ export const TemplateGenerator = () => {
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
   const [membersFile, setMembersFile] = useState<File | null>(null);
 
+  const fileInput = useRef<HTMLInputElement>(null);
+  const selectFile = () => {
+    fileInput?.current?.click();
+  }
+
   const submit = () => {
     if (!membersFile) {
-        return;
+      toast.error('No file selected!'); 
+      return;
     }
     
     const generateDocument = async (members: Member[], downloadName: string, templateFile: Blob): Promise<DownloadableFile> => {
-        console.log(members);
 
         const data: TemplateData = {
         members: [...members.map((x, i) => { return {...x, entryn: i + 1} })],
@@ -113,11 +120,16 @@ export const TemplateGenerator = () => {
 
   return (
     <div className="container">
-      Choose your file here:
-      <input onChange={(e) => setSelectedFiles(e.target.files)} type="file"></input>
-      <button onClick={() => submit()}>Submit</button>
-        
+      <Label size="large">Generate:</Label>
+      
+      <div className="inline">
+        Choose your .xlsx file here:
+        <Button onClick={() => selectFile()} size="large" icon={selectedFiles === null ? <Folder48Filled /> : <Checkmark48Filled />} />
+      </div>
 
+      <Button onClick={() => submit()}>Generate Files</Button>
+
+      <input onChange={(e) => setSelectedFiles(e.target.files)} type="file" accept=".xlsx" style={{ "display": "none" }} ref={fileInput} />
     </div>
   );
 }
