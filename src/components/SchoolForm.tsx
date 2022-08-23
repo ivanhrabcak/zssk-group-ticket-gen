@@ -15,7 +15,7 @@ export const SchoolForm = ({setOrganization}: {setOrganization: (organization: O
             organizationPhoneN: phoneNumber,
             organizationEmailAddress: emailAddress
          })
-    }, [schoolName, headquarters, phoneNumber, emailAddress])
+    }, [schoolName, headquarters, phoneNumber, emailAddress, setOrganization])
 
     return (
         <div className="spaced">

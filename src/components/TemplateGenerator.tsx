@@ -1,4 +1,4 @@
-import React, { Ref, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TemplateData, TemplateHandler } from 'easy-template-x';
 import { toast } from 'react-toastify';
 import { read, utils } from 'xlsx';

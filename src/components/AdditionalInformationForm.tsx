@@ -1,12 +1,11 @@
-import { Button, Divider, Input, Label, Text } from "@fluentui/react-components"
-import { Delete48Filled, DismissCircle48Filled } from "@fluentui/react-icons";
+import { Divider, Label } from "@fluentui/react-components"
 import { TemplateData } from "easy-template-x";
-import { Fragment, useEffect, useRef, useState } from "react"
+import { useState } from "react"
 
 import '../css/AdditionalInformationForm.css'
+
 import { GroupLeaderForm } from "./GroupLeaderForm";
 import { SchoolForm } from "./SchoolForm";
-import { TrainEntryForm } from "./TrainEntryForm";
 import { TransportForm } from "./TransportForm";
 
 export type Train = {

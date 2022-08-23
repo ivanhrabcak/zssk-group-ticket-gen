@@ -20,7 +20,7 @@ export const GroupLeaderForm = ({setLeader}: {setLeader: (leader: GroupLeader) =
             groupLeaderIdCardN: groupLeaderCardNumber
         });
     }, [groupLeaderName, groupLeaderPhoneNumber, groupLeaderIdCardNumber, 
-        groupLeaderCathegory, groupLeaderCardNumber])
+        groupLeaderCathegory, groupLeaderCardNumber, setLeader])
 
     return (
         <div className="spaced">

@@ -1,4 +1,4 @@
-import { Input, Label, Text } from "@fluentui/react-components"
+import { Input, Label } from "@fluentui/react-components"
 import { useEffect, useState } from "react"
 
 import '../css/TrainEntryForm.css';
