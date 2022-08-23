@@ -64,8 +64,10 @@ function App() {
         </div>
         
         <Divider className="divider" vertical={true} />
-        
-        <Tutorial />
+        <div>
+          <Tutorial />
+          <ServerStatus />
+        </div>
         <ToastContainer position="top-right" />
       </div>
     </div>
