@@ -24,7 +24,7 @@ export const TrainEntryForm = ({setTrain}: {setTrain: (train: Train) => void}) =
             to: desination,
             trainNumber: trainNumber.toString()
         })
-    }, [departureDate, trainNumber, desination, start])
+    }, [departureDate, trainNumber, desination, start, setTrain])
 
     useEffect(() => {
         if (!query || query.length < 3) {
