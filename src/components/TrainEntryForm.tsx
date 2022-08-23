@@ -6,7 +6,7 @@ import { Train } from "./AdditionalInformationForm";
 
 export const TrainEntryForm = ({setTrain}: {setTrain: (train: Train) => void}) => {
     const [departureDate, setDepartureDate] = useState<Date | null>(null);
-    const [trainNumber, setTrainNumber] = useState<number | null>(null);
+    const [trainNumber, setTrainNumber] = useState<string | null>(null);
     const [desination, setDestination] = useState<string | null>(null);
     const [start, setStart] = useState<string | null>(null);
 
@@ -22,7 +22,7 @@ export const TrainEntryForm = ({setTrain}: {setTrain: (train: Train) => void}) =
             dateOfDeparture: departureDate.toLocaleDateString('sk-SK'),
             from: start,
             to: desination,
-            trainNumber: trainNumber.toString()
+            trainNumber: trainNumber
         })
     }, [departureDate, trainNumber, desination, start, setTrain])
 
@@ -54,7 +54,7 @@ export const TrainEntryForm = ({setTrain}: {setTrain: (train: Train) => void}) =
 
             <div className="input-container">
                 <Label>Train number</Label>
-                <Input type="number" onChange={(e) => setTrainNumber(parseInt(e.target.value))}></Input>
+                <Input type="text" onChange={(e) => setTrainNumber(e.target.value)}></Input>
             </div>
 
             <div className="input-container">
