@@ -23,12 +23,13 @@ jobs:
       uses: borales/actions-yarn@v3.0.0
       with:
         cmd: build # will run `yarn build` command
-
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.1
+    
+    - name: Upload build via FTP
+      uses: airvzxf/ftp-deployment-action@latest
       with:
         server: hrabcak.eu
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
-        local-dir: build/
-        server-dir: hrabcak.eu/web/ivan/${{ github.event.repository.name }}/
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local_dir: "./build/"
+        delete: "true"
+        remote_dir: hrabcak.eu/web/ivan/${{ github.event.repository.name }}/
