@@ -31,4 +31,4 @@ jobs:
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         local-dir: build/
-        server-dir: hrabcak.eu/web/ivan/${{ github.event.repository.name }}
+        server-dir: hrabcak.eu/web/ivan/${{ github.event.repository.name }}/
