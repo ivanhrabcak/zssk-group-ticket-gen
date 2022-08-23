@@ -40,6 +40,7 @@
       "react-app/jest"
     ]
   },
+  "homepage": "https://ivan.hrabcak.eu/vlaky/",
   "browserslist": {
     "production": [
       ">0.2%",

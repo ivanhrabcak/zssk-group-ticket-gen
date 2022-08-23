@@ -8,8 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Divider, Text } from '@fluentui/react-components';
 import { AdditionalInformation, AdditionalInformationForm } from './components/AdditionalInformationForm';
-import { ServerStatus } from './components/ServerStatus';
-import { GroupLeaderForm } from './components/GroupLeaderForm';
 
 const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
@@ -35,10 +33,10 @@ function App() {
   }
 
 
-  if (width < 1850) {
+  if (width < 1336) {
     return (
       <div>
-        <Text>Your screen is too thin! (it has to be at least 1850 pixels wide)</Text>
+        <Text>Your screen is too thin! (it has to be at least 1336 pixels wide)</Text>
       </div>
     )
   }
@@ -46,20 +44,13 @@ function App() {
     <div className="vertically-center">
       <div className="outer-container">
         <div className="container">
-          
-
           <AdditionalInformationForm setAdditionalInformation={setAdditionalInformation} />
-          
           <TemplateGenerator additionalInformationRef={additionalInformationRef} />
-
-          
         </div>
         
         <Divider className="divider" vertical={true} />
         
         <Tutorial />
-        
-
         <ToastContainer position="top-right" />
       </div>
     </div>

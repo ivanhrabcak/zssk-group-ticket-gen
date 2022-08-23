@@ -8,9 +8,10 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .left-side {
     align-self: flex-start;
-    margin-bottom: 10px;;
+    margin-bottom: 10px;
 }

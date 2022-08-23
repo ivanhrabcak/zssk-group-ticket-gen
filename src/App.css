@@ -50,8 +50,12 @@ body {
 
 .outer-container {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 67% 10% 23%;
   gap: 10px;
+}
+
+.container {
+  width: 100%;
 }
 
 .divider {
@@ -62,4 +66,8 @@ body {
 
 .padded {
   margin: 30px;
+}
+
+.wide {
+  width: 100%;
 }
