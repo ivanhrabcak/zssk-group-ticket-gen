@@ -6,8 +6,9 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Divider, Text } from '@fluentui/react-components';
+import { Divider } from '@fluentui/react-components';
 import { AdditionalInformation, AdditionalInformationForm } from './components/AdditionalInformationForm';
+import { ServerStatus } from './components/ServerStatus';
 
 const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
@@ -30,16 +31,30 @@ function App() {
 
   window.onresize = () => {
     setWidthRef.current(getWindowDimensions().width);
-  }
+  };
 
-
-  if (width < 1336) {
+  if (width < 920) {
     return (
       <div>
-        <Text>Your screen is too thin! (it has to be at least 1336 pixels wide)</Text>
+        Your screen is too thin! (it has to be at least 920 pixels wide)
       </div>
     )
   }
+  if (width < 1340) {
+    return (
+      <div>
+        <Tutorial />
+        <div className="container">
+          <AdditionalInformationForm setAdditionalInformation={setAdditionalInformation} />
+          <TemplateGenerator additionalInformationRef={additionalInformationRef} />
+        </div>
+        
+        <ToastContainer position="top-right" />
+        <ServerStatus />
+      </div>
+    );
+  }
+
   return (
     <div className="vertically-center">
       <div className="outer-container">
