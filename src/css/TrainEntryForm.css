@@ -1,0 +1,24 @@
+.train-entry-form-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    z-index: 5;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.wide {
+    width: 200px;
+}
+
+.front {
+    z-index: 5;
+}
+
+.center-of-form {
+    position: relative;
+    top: 10px;
+}

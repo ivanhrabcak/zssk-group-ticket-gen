@@ -1,0 +1,34 @@
+.trainentryform {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 5;
+}
+
+.tall {
+    height: 100%;
+}
+
+.red {
+    color: red;
+}
+
+.left {
+    margin-right: 42px;
+}
+
+.top-margin {
+    margin-top: 10px;
+}
+
+.train-form-outer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.small-button {
+    width: 42px;
+}

@@ -57,4 +57,9 @@ body {
 .divider {
   height: 500px;
   padding: 50px;
+  z-index: 0;
+}
+
+.padded {
+  margin: 30px;
 }

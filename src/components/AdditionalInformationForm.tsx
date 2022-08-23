@@ -1,70 +1,70 @@
-import { Input, Label, Text } from "@fluentui/react-components"
-import { useEffect, useState } from "react"
-import { ReactSearchAutocomplete } from "react-search-autocomplete"
+import { Button, Divider, Input, Label, Text } from "@fluentui/react-components"
+import { Delete48Filled, DismissCircle48Filled } from "@fluentui/react-icons";
+import { TemplateData } from "easy-template-x";
+import { Fragment, useEffect, useRef, useState } from "react"
 
 import '../css/AdditionalInformationForm.css'
+import { GroupLeaderForm } from "./GroupLeaderForm";
+import { SchoolForm } from "./SchoolForm";
+import { TrainEntryForm } from "./TrainEntryForm";
+import { TransportForm } from "./TransportForm";
 
-type Completion = {
-    id: number
-    completion: string
-}
+export type Train = {
+    dateOfDeparture: string
+    from: string
+    to: string
+    trainNumber: string
+} & TemplateData
 
-export const AdditionalInformationForm = () => {
-    const [departureDate, setDepartureDate] = useState<Date | null>(null);
-    const [trainNumber, setTrainNumber] = useState<number | null>(null);
-    const [desination, setDestination] = useState<string | null>(null);
-    const [start, setStart] = useState<string | null>(null);
+export type GroupLeader = {
+    groupLeaderName: string
+    groupLeaderPhoneN: string
+    groupLeaderIdCardN: string
+    groupLeaderCat: string
+    groupLeaderCard: string
+} & TemplateData
 
-    const [placeCompletions, setPlaceCompletions] = useState<Completion[]>([]);
-    const [query, setQuery] = useState<string | null>(null);
+export type Organization = {
+    organizationName: string
+    organizationHeadquarters: string
+    organizationPhoneN: string
+    organizationEmailAddress: string
+} & TemplateData
 
-    useEffect(() => {
-        if (!query || query.length < 3) {
-            return;
-        }
+export type AdditionalInformation = {
+    trains: Train[]
+    leader: GroupLeader
+    organization: Organization
+} & TemplateData
 
-        const fetchCompletions = async () => {
-            const completions = await getCompletions(query)
-            setPlaceCompletions(completions.map((x, i) => { return {id: i, completion: x} }));
-        }
+export const defaultTrain = (): Train => { return { dateOfDeparture: '', from: '', to: '', trainNumber: '' } }
 
-        fetchCompletions();
-    }, [query])
+export const AdditionalInformationForm = ({setAdditionalInformation}: {setAdditionalInformation: (information: AdditionalInformation) => void}) => {
+    const [trains, setTrains] = useState<Train[]>([defaultTrain()]);
+    const [organization, setOrganization] = useState<Organization | null>(null);
+    const [leader, setLeader] = useState<GroupLeader | null>(null);
 
-    const getCompletions = async (query: string): Promise<string[]> => {
-        const response = await fetch(`https://blooming-headland-63549.herokuapp.com/completions/${query}`);
-        return (await response.json()).response;
-    }
 
     return (
-        <div className="container">
-            <datalist id="results">
-                {
-                    placeCompletions.map(x => (<option value={x.completion} />))
-                }
-            </datalist>
-            <Label size="large">Enter Additional Information:</Label>
-            
-            <Text size={400}>Transport:</Text>
-            <div className="input-container">
-                <Label>Date of departure</Label>
-                <Input onChange={(e) => setDepartureDate(new Date(e.target.value))} type="datetime-local" id="date-input" />
-            </div>
-
-            <div className="input-container">
-                <Label>Train number</Label>
-                <Input type="number" onChange={(e) => setTrainNumber(parseInt(e.target.value))}></Input>
-            </div>
-
-            <div className="input-container wide">
-                <Label>From</Label>
-                <Input list="results" onChange={e => { setQuery(e.target.value); setStart(e.target.value) }} type="search"></Input>
-            </div>
-
-            <div className="input-container wide">
-                <Label>To</Label>
-                <Input list="results" onChange={e => { setQuery(e.target.value); setDestination(e.target.value) }} type="search"></Input>
-            </div>
+        <div className="additional-info-container">
+            <Label className="left-side" size="large">Enter Additional Information:</Label>
+            <TransportForm trains={trains} setTrains={(x) => {
+                setTrains(x);
+                if (organization != null && leader != null)
+                    setAdditionalInformation({ trains, organization, leader })
+            }} />
+            <Divider className="padded small" />
+            <GroupLeaderForm setLeader={(x) => {
+                setLeader(x);
+                if (organization != null && leader != null)
+                    setAdditionalInformation({ trains, organization, leader })
+            }} />
+            <Divider className="padded small" />
+            <SchoolForm setOrganization={(x) => {
+                setOrganization(x);
+                if (organization != null && leader != null)
+                    setAdditionalInformation({ trains, organization, leader })
+            }} />
         </div>
     )
 }

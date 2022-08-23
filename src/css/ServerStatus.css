@@ -15,6 +15,5 @@
 }
 
 .bottom-left {
-    position: absolute;
-    top: 90%;
+    margin-top: 50px;
 }

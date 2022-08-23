@@ -1,14 +1,16 @@
-.container {
+.small {
+    width: 10px;
+}
+
+.additional-info-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
-.input-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.wide {
-    width: 200px;
+.left-side {
+    align-self: flex-start;
+    margin-bottom: 10px;;
 }

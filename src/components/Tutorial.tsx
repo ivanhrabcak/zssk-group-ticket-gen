@@ -1,5 +1,6 @@
 import { Label, Text } from "@fluentui/react-components";
 import '../css/Tutorial.css';
+import { ServerStatus } from "./ServerStatus";
 
 export const Tutorial = () => {
     return (
@@ -13,12 +14,14 @@ export const Tutorial = () => {
                     </div>
                     <li>Make sure you format all cells as text (not as a number or date or anything else)!!!</li>
                     <li>Save your file as xlsx.</li>
-                    <li>Input some additional information below (the same information will be in every document)</li>
+                    <li>Input some additional information (this information will be the same in every document)</li>
                     <li>Choose your excel file in the "Generate" section</li>
-                    <li>Click "Generate files"</li>
+                    <li>Click "Generate Files"</li>
                     And you're done!
                 </ol>
             </Text>
+
+            <ServerStatus />
         </div>
     );
 }
