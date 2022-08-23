@@ -27,9 +27,9 @@ jobs:
     - name: Upload build via FTP
       uses: airvzxf/ftp-deployment-action@latest
       with:
-        server: hrabcak.eu
+        server: "37.9.175.132"
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local_dir: "./build/"
         delete: "true"
-        remote_dir: hrabcak.eu/web/ivan/${{ github.event.repository.name }}/
+        remote_dir: hrabcak.eu/web/ivan/vlaky/
