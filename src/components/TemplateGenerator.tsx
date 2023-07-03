@@ -108,7 +108,9 @@ export const TemplateGenerator = ({additionalInformationRef}: {additionalInforma
     }
 
     const parseMembers = async () => {
-        const fileResponse = await fetch(`${process.env.PUBLIC_URL}/template.docx`);
+        const assetURL = new URL('../../public/template.docx', import.meta.url);
+        console.log({assetURL})
+        const fileResponse = await fetch(assetURL.toString());
         const templateFile = await fileResponse.blob();
         
         const data = await membersFile.arrayBuffer();
@@ -116,10 +118,15 @@ export const TemplateGenerator = ({additionalInformationRef}: {additionalInforma
 
         const files = [];
         const members = utils.sheet_to_json<Member>(workbook.Sheets[workbook.SheetNames[0]]);
-        for (let i = 0; i < members.length / 20; i++) {
+        
+        let i = 0;
+        let documentId = 0;
+        while (i < members.length) {
           const twentySubset = padTo20(members.slice(i, i + 20));
           console.log({twentySubset});
-          files.push(await generateDocument(twentySubset, `part${i + 1}.docx`, templateFile));
+          files.push(await generateDocument(twentySubset, `part${documentId + 1}.docx`, templateFile));
+          i += 20;
+          documentId++;
         }
 
         const zip = new JSZip();

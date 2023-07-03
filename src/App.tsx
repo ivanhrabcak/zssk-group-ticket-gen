@@ -24,7 +24,6 @@ function App() {
   const [additionalInformation, setAdditionalInformation] = useState<AdditionalInformation | null>(null);
   const additionalInformationRef = useRef(additionalInformation);
 
-  console.log({additionalInformation})
 
   additionalInformationRef.current = additionalInformation;
   setWidthRef.current = setWidth;

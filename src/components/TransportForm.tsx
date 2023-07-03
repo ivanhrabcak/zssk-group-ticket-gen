@@ -18,8 +18,10 @@ export const TransportForm = ({trains, setTrains}: {trains: Train[], setTrains: 
                         return (
                             <div key={i} className={`trainentryform ${i === 0 ? 'left' : ''}`}>
                                 <Text className="center-of-form" size={400} weight="semibold">{i + 1}.</Text>
-                                <TrainEntryForm setTrain={(newTrain) => {
-                                    setTrains(trains.map((t, j) => i === j ? newTrain : t))
+                                <TrainEntryForm 
+                                    train={trains[i]}
+                                    setTrain={(newTrain) => {
+                                        setTrains(trains.map((t, j) => i === j ? newTrain : t))
                                 }} />
                                 { i !== 0 && 
                                     <div className="vertically-center">

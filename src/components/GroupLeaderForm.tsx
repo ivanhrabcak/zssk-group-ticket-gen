@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import '../css/GroupLeaderForm.css';
 import { GroupLeader } from "./AdditionalInformationForm";
 
-export const GroupLeaderForm = ({setLeader}: {setLeader: (leader: GroupLeader) => void}) => {
+export const GroupLeaderForm = ({setLeader, leader}: {setLeader: (leader: GroupLeader) => void, leader: GroupLeader | null}) => {
     const [groupLeaderName, setGroupLeaderName] = useState<string>('');
     const [groupLeaderPhoneNumber, setGroupLeaderPhoneNumber] = useState<string>('');
     const [groupLeaderIdCardNumber, setGroupLeaderIdCardNumber] = useState<string>('');
@@ -12,12 +12,21 @@ export const GroupLeaderForm = ({setLeader}: {setLeader: (leader: GroupLeader) =
     const [groupLeaderCardNumber, setGroupLeaderCardNumber] = useState<string>('');
 
     useEffect(() => {
+        if (leader != null) {
+            if (leader.groupLeaderIdCardN == groupLeaderIdCardNumber 
+                && leader.groupLeaderCat == groupLeaderCathegory 
+                && leader.groupLeaderCard == groupLeaderCardNumber 
+                && leader.groupLeaderPhoneN == groupLeaderPhoneNumber
+                && leader.groupLeaderName == groupLeaderName) {
+                return
+            }
+        }
         setLeader({
             groupLeaderName,
             groupLeaderPhoneN: groupLeaderPhoneNumber,
             groupLeaderCard: groupLeaderCardNumber,
             groupLeaderCat: groupLeaderCathegory,
-            groupLeaderIdCardN: groupLeaderCardNumber
+            groupLeaderIdCardN: groupLeaderIdCardNumber
         });
     }, [groupLeaderName, groupLeaderPhoneNumber, groupLeaderIdCardNumber, 
         groupLeaderCathegory, groupLeaderCardNumber, setLeader])

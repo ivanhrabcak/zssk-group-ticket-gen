@@ -53,17 +53,21 @@ export const AdditionalInformationForm = ({setAdditionalInformation}: {setAdditi
                     setAdditionalInformation({ trains, organization, leader })
             }} />
             <Divider className="padded small" />
-            <GroupLeaderForm setLeader={(x) => {
-                setLeader(x);
-                if (organization != null && leader != null)
-                    setAdditionalInformation({ trains, organization, leader })
-            }} />
+            <GroupLeaderForm 
+                leader={leader}
+                setLeader={(x) => {
+                    setLeader(x);
+                    if (organization != null && leader != null)
+                        setAdditionalInformation({ trains, organization, leader })
+                }} />
             <Divider className="padded small" />
-            <SchoolForm setOrganization={(x) => {
-                setOrganization(x);
-                if (organization != null && leader != null)
-                    setAdditionalInformation({ trains, organization, leader })
-            }} />
+            <SchoolForm 
+                organization={organization}
+                setOrganization={(x) => {
+                    setOrganization(x);
+                    if (organization != null && leader != null)
+                        setAdditionalInformation({ trains, organization, leader })
+                }} />
         </div>
     )
 }

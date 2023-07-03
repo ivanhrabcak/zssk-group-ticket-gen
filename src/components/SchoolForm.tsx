@@ -2,13 +2,21 @@ import { Input, Label, Text } from "@fluentui/react-components";
 import { useEffect, useState } from "react";
 import { Organization } from "./AdditionalInformationForm";
 
-export const SchoolForm = ({setOrganization}: {setOrganization: (organization: Organization) => void}) => {
+export const SchoolForm = ({setOrganization, organization}: {setOrganization: (organization: Organization) => void, organization: Organization | null}) => {
     const [schoolName, setSchoolName] = useState<string>('');
     const [headquarters, setHeadquarters] = useState<string>('');
     const [phoneNumber, setPhoneNumber] = useState<string>('');
     const [emailAddress, setEmailAddress] = useState<string>('');
 
     useEffect(() => {
+        if (organization != null) {
+            if (organization.organizationEmailAddress == emailAddress
+                && organization.organizationHeadquarters == headquarters
+                && organization.organizationName == schoolName
+                && organization.organizationPhoneN == phoneNumber) {
+                    return 
+                }
+        }
         setOrganization({ 
             organizationName: schoolName,
             organizationHeadquarters: headquarters,

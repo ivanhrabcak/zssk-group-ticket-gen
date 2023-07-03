@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import '../css/TrainEntryForm.css';
 import { Train } from "./AdditionalInformationForm";
 
-export const TrainEntryForm = ({setTrain}: {setTrain: (train: Train) => void}) => {
+export const TrainEntryForm = ({setTrain, train}: {setTrain: (train: Train) => void, train: Train}) => {
     const [departureDate, setDepartureDate] = useState<Date | null>(null);
     const [trainNumber, setTrainNumber] = useState<string | null>(null);
     const [desination, setDestination] = useState<string | null>(null);
@@ -16,6 +16,15 @@ export const TrainEntryForm = ({setTrain}: {setTrain: (train: Train) => void}) =
     useEffect(() => {
         if (!departureDate || !trainNumber || !desination || !start) {
             return;
+        }
+
+        if (train !== undefined) {
+            if (train.dateOfDeparture == departureDate.toLocaleDateString('sk-SK')
+                && train.from == start
+                && train.to == desination
+                && train.trainNumber == trainNumber) {
+                    return
+                }
         }
 
         setTrain({
