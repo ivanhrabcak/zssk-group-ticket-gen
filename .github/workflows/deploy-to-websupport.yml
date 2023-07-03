@@ -30,6 +30,6 @@ jobs:
         server: "37.9.175.132"
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local_dir: "./build/"
+        local_dir: "./dist/"
         delete: "true"
         remote_dir: hrabcak.eu/web/ivan/vlaky/
