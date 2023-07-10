@@ -27,10 +27,10 @@ export const SchoolForm = ({setOrganization, organization}: {setOrganization: (o
 
     return (
         <div className="spaced">
-            <Text size={400}>Organisation Information:</Text>
+            <Text size={400}>Organization Information:</Text>
             <div className="side-by-side">
                 <div className="input-container">
-                    <Label>Organisation name</Label>
+                    <Label>Organization name</Label>
                     <Input type="text" onChange={(e) => setSchoolName(e.target.value)}></Input>
                 </div>
             
@@ -43,12 +43,12 @@ export const SchoolForm = ({setOrganization, organization}: {setOrganization: (o
 
             <div className="side-by-side">
                 <div className="input-container">
-                    <Label>Organisation email address</Label>
+                    <Label>Organization email address</Label>
                     <Input type="email" onChange={(e) => setEmailAddress(e.target.value)}></Input>
                 </div>
 
                 <div className="input-container">
-                    <Label>Organisation phone number</Label>
+                    <Label>Organization phone number</Label>
                     <Input type="text" onChange={(e) => setPhoneNumber(e.target.value)}></Input>
                 </div>
             </div>

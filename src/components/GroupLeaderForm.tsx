@@ -60,7 +60,7 @@ export const GroupLeaderForm = ({setLeader, leader}: {setLeader: (leader: GroupL
 
             <div className="side-by-side">
                 <div className="input-container">
-                    <Label>Group leader cathegory:</Label>
+                    <Label>Group leader category:</Label>
                     <RadioGroup onChange={(_, v) => setGroupLeaderCathegory(v.value)}>
                         {
                             ['A', 'B', 'C', 'D'].map((x, i) => <Radio key={i} label={x} value={x} />)
